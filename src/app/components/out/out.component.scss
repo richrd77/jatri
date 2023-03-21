@@ -1,0 +1,37 @@
+div.in-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div.container {
+        width: 500px;
+        padding: 1em;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        > h1 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        > form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1em;
+            > mat-form-field {
+                > mat-label {
+                    text-transform: capitalize;
+                }
+                > input {
+                }
+            }
+            >a {
+                display: flex;
+                align-items: center;
+                width: fit-content;
+            }
+            > div.actions {
+                > button {
+                }
+            }
+        }
+    }
+}

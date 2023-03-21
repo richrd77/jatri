@@ -5,7 +5,11 @@ import { In } from "../models/in.model";
     providedIn: 'root'
 })
 export class googleFormService {
-    Save(InModel: In): void {
+    CheckIn(InModel: In): void {
 
+    }
+
+    CheckOut(number: string): void {
+        
     }
 }

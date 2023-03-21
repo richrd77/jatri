@@ -33,7 +33,7 @@ export class InComponent {
   FormSubmit(): void {
     alert(this.fgroup.status);
     if (this.fgroup.valid) {
-      this.form.Save(new In(this.fgroup.getRawValue()));
+      this.form.CheckIn(new In(this.fgroup.getRawValue()));
     }
   }
 
