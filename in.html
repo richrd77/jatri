@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        div.in-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        div.container {
+            width: 300px;
+            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+            padding: 1em;
+        }
+
+        form {}
+    </style>
+</head>
+
+<body>
+    <div class="in-wrapper">
+        <div class="container">
+            <h1>Come In</h1>
+            <form id="frm">
+                <a href="/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
+                <div class="control"><label for="name">Name</label><input type="text" name="name" id="name"></div>
+                <div class="control"><label for="vnumber">Vechile Number</label><input type="text" name="vnumber"
+                        id="vnumber"></div>
+                <div class="control"><label for="number">Phone Number</label><input type="text" name="number"
+                        id="number"></div>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        const apiUrl = '';
+        document.querySelector('#frm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            //ajax call
+            fetch(apiUrl,{ method:'POST', body:{} }).then(r => r.text()).then(o => {
+                console.log(o);
+                // Success code here
+            })
+        });
+    </script>
+</body>
+
+</html>
