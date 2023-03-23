@@ -48,7 +48,7 @@
             gap: 1em;
         }
 
-        a > i {
+        a>i {
             margin-right: 10px;
         }
 
@@ -57,7 +57,8 @@
             border: 1px solid;
             height: 2em;
         }
-        div.control > label {
+
+        div.control>label {
             position: absolute;
             padding: 0 10px;
             top: -10px;
@@ -67,7 +68,7 @@
             z-index: 2;
         }
 
-        div.control > input {
+        div.control>input {
             position: absolute;
             inset: 0;
             outline: none;
@@ -76,7 +77,8 @@
 
         button {
             outline: none;
-            padding: 10px 1em;
+            padding: 1em 1em;
+            position: relative;
         }
 
         button.progress {
@@ -85,10 +87,56 @@
 
         button>span.msg {
             transition: opacity 0.6s;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         button.progress>span.msg {
             opacity: 0;
+        }
+
+        button.progress>svg {
+            opacity: 1;
+        }
+
+        button>svg {
+            transition: opacity 0.6s;
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 0 auto;
+            width: 1em;
+            height: 1em;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        button>svg>path {
+            stroke: #2e0000;
+            stroke-linecap: round;
+            -webkit-animation: dash 1.1s ease-in-out infinite;
+            animation: dash 1.1s ease-in-out infinite;
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 160;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 80, 160;
+                stroke-dashoffset: -32;
+            }
+
+            100% {
+                stroke-dasharray: 80, 160;
+                stroke-dashoffset: -124;
+            }
         }
     </style>
 </head>
@@ -101,7 +149,13 @@
                 <a href="/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
                 <div class="control"><label for="vnumber">Vechile Number</label><input type="text" name="vnumber"
                         id="vnumber"></div>
-                <button type="submit"><span class="msg">Save</span></button>
+                <button type="submit">
+                    <span class="msg">Save</span>
+                    <svg class="spinner" viewBox="0 0 16 18">
+                        <path class="path" fill="none" stroke-width="2"
+                            d="M7.21487 1.2868C7.88431 0.9044 8.73031 0.9044 9.39974 1.2868L9.40283 1.28856L14.4613 4.20761C15.1684 4.598 15.5746 5.33558 15.5746 6.11465V8.99996V11.8853C15.5746 12.6507 15.1632 13.3848 14.4617 13.7721L9.37973 16.7132C8.71029 17.0956 7.86428 17.0956 7.19485 16.7132L7.19088 16.7109L2.11279 13.772C1.40602 13.3816 1 12.6441 1 11.8653V8.98995V6.11465C1 5.31458 1.44381 4.59039 2.10827 4.21051L7.21487 1.2868Z" />
+                    </svg>
+                </button>
             </form>
         </div>
     </div>
@@ -109,10 +163,15 @@
         const apiUrl = '';
         document.querySelector('#frm').addEventListener('submit', function (e) {
             e.preventDefault();
+            document.querySelector('button').classList.add('progress');
             //ajax call
             fetch(apiUrl, { method: 'POST', body: {} }).then(r => r.text()).then(o => {
+                document.querySelector('button').classList.remove('progress');
                 console.log(o);
                 // Success code here
+            }).catch((e) => {
+                document.querySelector('button').classList.remove('progress');
+                // error handling
             })
         });
     </script>
