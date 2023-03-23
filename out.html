@@ -37,6 +37,59 @@
             box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
             padding: 1em;
         }
+
+        h1 {
+            margin-bottom: 1em;
+        }
+
+        form#frm {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1em;
+        }
+
+        a > i {
+            margin-right: 10px;
+        }
+
+        div.control {
+            position: relative;
+            border: 1px solid;
+            height: 2em;
+        }
+        div.control > label {
+            position: absolute;
+            padding: 0 10px;
+            top: -10px;
+            left: 1em;
+            font-size: 0.8em;
+            background-color: white;
+            z-index: 2;
+        }
+
+        div.control > input {
+            position: absolute;
+            inset: 0;
+            outline: none;
+            padding: 0 10px;
+        }
+
+        button {
+            outline: none;
+            padding: 10px 1em;
+        }
+
+        button.progress {
+            pointer-events: none;
+        }
+
+        button>span.msg {
+            transition: opacity 0.6s;
+        }
+
+        button.progress>span.msg {
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -48,7 +101,7 @@
                 <a href="/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
                 <div class="control"><label for="vnumber">Vechile Number</label><input type="text" name="vnumber"
                         id="vnumber"></div>
-                <button type="submit">Save</button>
+                <button type="submit"><span class="msg">Save</span></button>
             </form>
         </div>
     </div>

@@ -38,7 +38,59 @@
             padding: 1em;
         }
 
-        form {}
+        h1 {
+            margin-bottom: 1em;
+        }
+
+        form#frm {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1em;
+        }
+
+        a>i {
+            margin-right: 10px;
+        }
+
+        div.control {
+            position: relative;
+            border: 1px solid;
+            height: 2em;
+        }
+
+        div.control>label {
+            position: absolute;
+            padding: 0 10px;
+            top: -10px;
+            left: 1em;
+            font-size: 0.8em;
+            background-color: white;
+            z-index: 2;
+        }
+
+        div.control>input {
+            position: absolute;
+            inset: 0;
+            outline: none;
+            padding: 0 10px;
+        }
+
+        button {
+            outline: none;
+            padding: 10px 1em;
+        }
+
+        button.progress {
+            pointer-events: none;
+        }
+
+        button>span.msg {
+            transition: opacity 0.6s;
+        }
+
+        button.progress>span.msg {
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -53,7 +105,9 @@
                         id="vnumber"></div>
                 <div class="control"><label for="number">Phone Number</label><input type="text" name="number"
                         id="number"></div>
-                <button type="submit">Save</button>
+                <button type="submit">
+                    <span class="msg">Save</span>
+                </button>
             </form>
         </div>
     </div>
@@ -62,7 +116,7 @@
         document.querySelector('#frm').addEventListener('submit', function (e) {
             e.preventDefault();
             //ajax call
-            fetch(apiUrl,{ method:'POST', body:{} }).then(r => r.text()).then(o => {
+            fetch(apiUrl, { method: 'POST', body: {} }).then(r => r.text()).then(o => {
                 console.log(o);
                 // Success code here
             })
