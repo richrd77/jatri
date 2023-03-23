@@ -160,17 +160,26 @@
         </div>
     </div>
     <script>
-        const apiUrl = '';
+        const postData = { type: 2, data: {} };
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbwPnuV6mNso_F-L-W7QZ5ijKHlKG3iVKukUdlhc28OKdXLX3gcjT7f3CenKxwi_swrZ/exec';
         document.querySelector('#frm').addEventListener('submit', function (e) {
             e.preventDefault();
             document.querySelector('button').classList.add('progress');
             //ajax call
-            fetch(apiUrl, { method: 'POST', body: {} }).then(r => r.text()).then(o => {
+
+            const g = document.querySelector('#vnumber').value;
+
+
+            postData.data = { vechicleNumber: g };
+
+            fetch(apiUrl, { method: 'POST', body: JSON.stringify(postData) }).then(r => { console.log(r.headers); return r.text(); }).then(o => {
                 document.querySelector('button').classList.remove('progress');
                 console.log(o);
+                alert('successfully checked out');
                 // Success code here
-            }).catch((e) => {
+            }).catch(e => {
                 document.querySelector('button').classList.remove('progress');
+                alert('error');
                 // error handling
             })
         });

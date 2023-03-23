@@ -147,10 +147,11 @@
             <h1>Come In</h1>
             <form id="frm">
                 <a href="/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
-                <div class="control"><label for="name">Name</label><input type="text" name="name" id="name"></div>
-                <div class="control"><label for="vnumber">Vechile Number</label><input type="text" name="vnumber"
-                        id="vnumber"></div>
-                <div class="control"><label for="number">Phone Number</label><input type="text" name="number"
+                <div class="control"><label for="name">Name</label><input required type="text" name="name" id="name">
+                </div>
+                <div class="control"><label for="vnumber">Vechile Number</label><input required type="text"
+                        name="vnumber" id="vnumber"></div>
+                <div class="control"><label for="number">Phone Number</label><input pattern="^\d{10}$" required type="text" name="number"
                         id="number"></div>
                 <button type="submit">
                     <span class="msg">Save</span>
@@ -163,17 +164,28 @@
         </div>
     </div>
     <script>
-        const apiUrl = '';
+        const postData = { type: 1, data: {} };
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbwjWrGVvWHaSQml61n_GOK5VBJp0LIjPvbcbTLMx5Db5vwepkqCXPIg6v6JpRT8TS6k/exec';
         document.querySelector('#frm').addEventListener('submit', function (e) {
             e.preventDefault();
             document.querySelector('button').classList.add('progress');
             //ajax call
-            fetch(apiUrl, { method: 'POST', body: {} }).then(r => r.text()).then(o => {
+            const n = document.querySelector('#name').value;
+            const g = document.querySelector('#vnumber').value;
+            const m = document.querySelector('#number').value;
+
+            postData.data = { name: n, vechicleNumber: g, mobileNumber: m };
+
+            fetch(apiUrl, { method: 'POST', body: JSON.stringify(postData) })
+            .then(r => { console.log(r.headers); return r.text(); })
+            .then(o => {
                 document.querySelector('button').classList.remove('progress');
                 console.log(o);
+                alert('successfully checked in');
                 // Success code here
             }).catch(e => {
                 document.querySelector('button').classList.remove('progress');
+                alert('error');
                 // error handling
             })
         });
