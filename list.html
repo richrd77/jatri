@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        main {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        button {
+            padding: 0.5em 2em;
+            background-color: var(--color);
+            border-radius: 4px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            color: var(--color);
+        }
+
+        button:active {
+            box-shadow: 0 0 8px 0 var(--color);
+        }
+
+        .dash {
+            background-color: white;
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 4px;
+            box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
+            min-height: 5em;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .tbl-header {
+            display: grid;
+            grid-template-columns: 85px 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        #list {
+            width: 100%;
+            border-color: transparent;
+            text-align: left;
+            border-spacing: 5px;
+        }
+
+        th {
+            background-color: #c0bfbf;
+        }
+
+        td,
+        th {
+            padding-left: 6px;
+        }
+
+        tr.gone td {
+            background-color: #8edc8e;
+        }
+
+        tr.no td {
+            background-color: #d68e8e;
+        }
+
+        #reload {
+            padding: 0.4em 0.7em;
+        }
+
+        #search {
+            padding: 0.4em 0.7em;
+            margin: 1em 0;
+            outline: none;
+            border-color: var(--color);
+        }
+
+        #search:focus,
+        #search:active {
+            box-shadow: 0 0 8px 0 var(--color);
+        }
+
+        @media (max-width:680px) {
+            main {
+                width: 95%;
+                padding: 10px;
+            }
+
+            td,
+            th {
+                padding: 0;
+            }
+
+            .dash {
+                padding: 1em 10px;
+            }
+
+            .tbl-wrapper {
+                overflow-x: auto;
+            }
+
+            .tbl-header {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="company-header">
+        <h1>gangwar</h1>
+    </header>
+    <main>
+        <section class="dash controls">
+            <p>Total Vehicles Inside: <span id="count">0</span></p>
+            <a href="/index.html">Home</a>
+        </section>
+        <section class="dash tbl">
+            <div class="tbl-header">
+                <button id="reload">Reload</button>
+                <input type="text" id="search">
+            </div>
+            <div class="tbl-wrapper">
+                <table id="list" border="1">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Vehicle Number</th>
+                            <th>Mobile Number</th>
+                            <th>In Time</th>
+                            <th>Out Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="100">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="/list.js"></script>
+    <script>
+        const gridHelper = new grid();
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbzHbVu-2TWZDu34v29wpcdA1nNfKlqO36Z22QUBXi_stMF4qLu0LXcsBMSpAxF7RpZZ/exec';
+        const txt = document.querySelector('#search');
+        document.querySelector('#reload').addEventListener('click', FetchRecords);
+
+        function FetchRecords() {
+            fetch(apiUrl).then(r => r.text()).then(o => {
+                gridHelper.masterData = o;
+            }).catch(e => console.error(e));
+        }
+
+        FetchRecords();
+
+        txt.addEventListener('keyup', () => txt.value ? gridHelper.Filter(txt.value) : gridHelper.Clear());
+    </script>
+</body>
+
+</html>
