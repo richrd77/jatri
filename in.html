@@ -178,7 +178,7 @@
             const g = document.querySelector('#vnumber').value;
             const m = document.querySelector('#number').value;
 
-            postData.data = { name: n, vechicleNumber: g, mobileNumber: m };
+            postData.data = { name: n, vehicleNumber: g, mobileNumber: m };
 
             fetch(apiUrl, { method: 'POST', body: JSON.stringify(postData) })
             .then(r => { console.log(r.headers); return r.text(); })
