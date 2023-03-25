@@ -70,12 +70,18 @@ class grid {
         } else {
             this.#PopulateEmptyRow();
         }
+        this.#UpdateCount();
+    }
+
+    #UpdateCount() {
+        document.getElementById('count').textContent = this.#unFilteredData.filter(e => !e.outTime).length;
     }
 
     Filter(txt) {
         const del = (item, e) => {
             if (item[e]) {
-                return item[e].toLowerCase().includes(txt.toLowerCase());
+                console.log('filter Delegate', item, e, item[e]);
+                return item[e].toString().toLowerCase().includes(txt.toLowerCase());
             }
             return false;
         }
