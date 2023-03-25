@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/common.css">
+        <link rel="stylesheet" href="/jatri/common.css">
     <style>
         * {
             margin: 0;
@@ -150,7 +150,7 @@
         <div class="container">
             <h1>go out</h1>
             <form id="frm">
-                <a href="/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
+                <a href="/jatri/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
                 <div class="control"><label for="vnumber">Vechile Number</label><input type="text" name="vnumber"
                         id="vnumber"></div>
                 <button type="submit">
@@ -165,7 +165,7 @@
     </div>
     <script>
         const postData = { type: 2, data: {} };
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbwPnuV6mNso_F-L-W7QZ5ijKHlKG3iVKukUdlhc28OKdXLX3gcjT7f3CenKxwi_swrZ/exec';
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbyXm8Z3eUkD2ntFtHfokB3bKTppBbCZ17pSD1d62CQ45Sj6tWl_zXRlivkCyUwy2Q3b/exec';
         document.querySelector('#frm').addEventListener('submit', function (e) {
             e.preventDefault();
             document.querySelector('button').classList.add('progress');

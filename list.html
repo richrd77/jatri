@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List</title>
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="/jatri/common.css">
     <style>
         main {
             width: 80%;
@@ -127,7 +127,7 @@
     <main>
         <section class="dash controls">
             <p>Total Vehicles Inside: <span id="count">0</span></p>
-            <a href="/index.html">Home</a>
+            <a href="/jatri/index.html">Home</a>
         </section>
         <section class="dash tbl">
             <div class="tbl-header">
@@ -154,10 +154,10 @@
             </div>
         </section>
     </main>
-    <script src="/list.js"></script>
+    <script src="/jatri/list.js"></script>
     <script>
         const gridHelper = new grid();
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbzHbVu-2TWZDu34v29wpcdA1nNfKlqO36Z22QUBXi_stMF4qLu0LXcsBMSpAxF7RpZZ/exec';
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbyXm8Z3eUkD2ntFtHfokB3bKTppBbCZ17pSD1d62CQ45Sj6tWl_zXRlivkCyUwy2Q3b/exec';
         const txt = document.querySelector('#search');
         document.querySelector('#reload').addEventListener('click', FetchRecords);
 

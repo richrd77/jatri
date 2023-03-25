@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="/common.css">
+        <link rel="stylesheet" href="/jatri/common.css">
     <style>
         * {
             margin: 0;
@@ -150,7 +150,7 @@
         <div class="container">
             <h1>Come In</h1>
             <form id="frm">
-                <a href="/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
+                <a href="/jatri/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
                 <div class="control"><label for="name">Name</label><input required type="text" name="name" id="name">
                 </div>
                 <div class="control"><label for="vnumber">Vechile Number</label><input required type="text"
@@ -169,7 +169,7 @@
     </div>
     <script>
         const postData = { type: 1, data: {} };
-        const apiUrl = 'https://script.google.com/macros/s/AKfycbwjWrGVvWHaSQml61n_GOK5VBJp0LIjPvbcbTLMx5Db5vwepkqCXPIg6v6JpRT8TS6k/exec';
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbyXm8Z3eUkD2ntFtHfokB3bKTppBbCZ17pSD1d62CQ45Sj6tWl_zXRlivkCyUwy2Q3b/exec';
         document.querySelector('#frm').addEventListener('submit', function (e) {
             e.preventDefault();
             document.querySelector('button').classList.add('progress');
