@@ -150,7 +150,6 @@
         <div class="container">
             <h1>Come In</h1>
             <form id="frm">
-                <a href="/jatri/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
                 <div class="control"><label for="number">Phone Number</label><input pattern="^\d{10}$" required type="text" name="number"
                         id="number"></div>
                 <button type="submit">
@@ -180,6 +179,7 @@
                 document.querySelector('button').classList.remove('progress');
                 console.log(o);
                 alert('successfully checked in');
+                document.querySelector('#number').value = '';
                 // Success code here
             }).catch(e => {
                 document.querySelector('button').classList.remove('progress');

@@ -150,7 +150,6 @@
         <div class="container">
             <h1>go out</h1>
             <form id="frm">
-                <a href="/jatri/index.html"><i class="fa-solid fa-arrow-left"></i>Back</a>
                 <div class="control"><label for="vnumber">Mobile Number</label><input type="text" name="vnumber"
                     pattern="^\d{10}$" required id="vnumber"></div>
                 <button type="submit">
@@ -181,6 +180,7 @@
                     document.querySelector('button').classList.remove('progress');
                     const res = JSON.parse(o)
                     console.log(res);
+                    document.querySelector('#vnumber').value = '';
                     if(res.success) {
                         alert('successfully checked out');
                     } else {
