@@ -30,22 +30,16 @@ class grid {
             let nametd = document.createElement('td');
             let gaditd = document.createElement('td');
             let numbertd = document.createElement('td');
-            let intd = document.createElement('td');
-            let outtd = document.createElement('td');
 
             nametd.innerText = this.#fetchValue(d['name']);
             gaditd.innerText = this.#fetchValue(d['vehicleNumber']);
             numbertd.innerText = this.#fetchValue(d['mobileNumber']);
-            intd.innerText = this.#fetchValue(d['inTime']);
-            outtd.innerText = this.#fetchValue(d['outTime']);
 
             trow.appendChild(nametd);
             trow.appendChild(gaditd);
             trow.appendChild(numbertd);
-            trow.appendChild(intd);
-            trow.appendChild(outtd);
 
-            if (this.#fetchValue(d['outTime'])) {
+            if (this.#fetchValue(d['mobileNumber'])) {
                 trow.classList.add('gone');
             } else {
                 trow.classList.add('no');
