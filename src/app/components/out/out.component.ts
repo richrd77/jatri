@@ -7,7 +7,7 @@ import { googleFormService } from 'src/app/services/google-form.service';
   styleUrls: ['./out.component.scss']
 })
 export class OutComponent {
-
+  
   constructor(public ser: googleFormService) { }
 
   Checkout(value: string): void {
