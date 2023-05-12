@@ -1,1 +1,2 @@
-<p>out works!</p>
+<app-j-form [InProgress]="false" Header="Go out"
+ (FormSubmitEvent)="Checkout($event)" [InProgress]="ser.InProgress$ | async"></app-j-form>
