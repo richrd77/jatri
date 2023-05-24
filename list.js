@@ -31,15 +31,15 @@ class grid {
             let gaditd = document.createElement('td');
             let numbertd = document.createElement('td');
 
-            nametd.innerText = this.#fetchValue(d['name']);
-            gaditd.innerText = this.#fetchValue(d['vehicleNumber']);
-            numbertd.innerText = this.#fetchValue(d['mobileNumber']);
+            nametd.innerText = this.#fetchValue(d['mobileNumber']);
+            gaditd.innerText = this.#fetchValue(d['inTime']);
+            numbertd.innerText = this.#fetchValue(d['outTime']);
 
             trow.appendChild(nametd);
             trow.appendChild(gaditd);
             trow.appendChild(numbertd);
 
-            if (this.#fetchValue(d['mobileNumber'])) {
+            if (this.#fetchValue(d['outTime'])) {
                 trow.classList.add('gone');
             } else {
                 trow.classList.add('no');
