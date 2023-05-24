@@ -68,6 +68,8 @@ class grid {
     }
 
     #UpdateCount() {
+        console.log('updateCount', this.#unFilteredData);
+        console.log('updateCount1', this.#unFilteredData[0]);
         document.getElementById('count').textContent = this.#unFilteredData.filter(e => !e.outTime).length;
     }
 
