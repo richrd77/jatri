@@ -68,7 +68,7 @@ class grid {
     }
 
     #UpdateCount() {
-        document.getElementById('count').textContent = this.#unFilteredData.filter(e => !e.mobileNumber).length;
+        document.getElementById('count').textContent = this.#unFilteredData.filter(e => !e.outTime).length;
     }
 
     Filter(txt) {
